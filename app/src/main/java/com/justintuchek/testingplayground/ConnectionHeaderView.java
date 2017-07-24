@@ -3,6 +3,7 @@ package com.justintuchek.testingplayground;
 
 import android.content.Context;
 import android.support.annotation.AttrRes;
+import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -54,6 +55,12 @@ public class ConnectionHeaderView extends LinearLayout {
                 connected = !connected;
             }
         });
+
+        setOrientation(LinearLayout.HORIZONTAL);
     }
 
+    @Override
+    public void setOrientation(int orientation) {
+        super.setOrientation(LinearLayout.HORIZONTAL);
+    }
 }
