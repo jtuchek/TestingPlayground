@@ -9,6 +9,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * https://google.github.io/android-testing-support-library/docs/espresso/intents/
+ */
 @RunWith(AndroidJUnit4.class)
 public class NextIntentTest {
 
