@@ -7,36 +7,22 @@ import android.support.test.espresso.Espresso;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.espresso.matcher.ViewMatchers;
-import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import junit.framework.Assert;
-
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 @RunWith(AndroidJUnit4.class)
 public class ConnectionHeaderViewTest {
 
     @Rule
-    public final ActivityTestRule<ViewTestActivity> rule =
-            new ActivityTestRule<>(ViewTestActivity.class, false, true);
+    public final ViewTestRule rule = new ViewTestRule(false, true, R.layout.test_view_connection_header);
 
     @Test
     public void whatever() {
-        Context appContext = InstrumentationRegistry.getTargetContext();
-        Assert.assertNotNull("Context must not be null", appContext);
-        Assert.assertNotNull("Activity must not be null", rule.getActivity());
-
-        Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
-        instrumentation.runOnMainSync(new Runnable() {
-            @Override
-            public void run() {
-                rule.getActivity().setContentView(R.layout.test_view_connection_header);
-            }
-        });
-
         Espresso.onView(ViewMatchers.withId(R.id.tv_connection_state_label))
                 .check(ViewAssertions.matches(ViewMatchers.withText("disconnected")));
 
@@ -51,7 +37,5 @@ public class ConnectionHeaderViewTest {
 
         Espresso.onView(ViewMatchers.withId(R.id.btn_connection_action))
                 .check(ViewAssertions.matches(ViewMatchers.withText("disconnect")));
-
-
     }
 }
